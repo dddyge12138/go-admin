@@ -202,9 +202,9 @@ func (e *SysDept) SetDeptPage(c *dto.SysDeptGetPageReq) (m []models.SysDept, err
 	var list []models.SysDept
 	err = e.getList(c, &list)
 	for i := 0; i < len(list); i++ {
-		if list[i].ParentId != 0 {
-			continue
-		}
+		//if list[i].ParentId != 0 {
+		//	continue
+		//}
 		info := e.deptPageCall(&list, list[i])
 		m = append(m, info)
 	}
