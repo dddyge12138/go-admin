@@ -39,10 +39,12 @@ type SysDept struct {
 // Get 获取SysDept对象
 func (e *SysDept) Get(d *dto.SysDeptGetReq, model *models.SysDept) error {
 	var err error
-	var data models.SysDept
+	//var data models.SysDept
 
-	db := e.Orm.Model(&data).
-		First(model, d.GetId())
+	//db := e.Orm.Model(&data).
+	//	First(model, d.GetId())
+	db := e.Orm.First(model, models.SysDept{DeptId: d.GetId().(int)})
+
 	err = db.Error
 	if err != nil && errors.Is(err, gorm.ErrRecordNotFound) {
 		err = errors.New("查看对象不存在或无权查看")

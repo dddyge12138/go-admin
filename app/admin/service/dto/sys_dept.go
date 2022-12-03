@@ -25,7 +25,7 @@ func (m *SysDeptGetPageReq) GetNeedSearch() interface{} {
 type SysDeptInsertReq struct {
 	DeptId   int    `uri:"id" comment:"编码"`                                         // 编码
 	ParentId int    `json:"parentId" comment:"上级部门" vd:"?"`                         //上级部门
-	DeptPath string `json:"deptPath" comment:""`                                    //路径
+	DeptPath string `json:"deptPath" comment:"" binding:"required"`                                    //路径
 	DeptName string `json:"deptName" comment:"部门名称" vd:"len($)>0"`                  //部门名称
 	Sort     int    `json:"sort" comment:"排序" vd:"?"`                               //排序
 	Leader   string `json:"leader" comment:"负责人" vd:"@:len($)>0; msg:'leader不能为空'"` //负责人
